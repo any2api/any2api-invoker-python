@@ -13,15 +13,11 @@
           "type": "string"
         },
         "env": {
-          "description": "Environment variables",
+          "description": "Environment variables; overrides environment variables mapped from parameters",
           "type": "object"
         },
         "stdin": {
-          "description": "Standard input",
-          "type": "string"
-        },
-        "cmd": {
-          "description": "Python command including all options and arguments",
+          "description": "Standard input; overrides standard input mapped from a parameter",
           "type": "string"
         },
         "access": {
@@ -49,6 +45,11 @@
         }
       },
       "required": [ "access" ]
+    },
+    "cmd": {
+      "description": "Python command including all options and arguments",
+      "type": "string",
+      "default": "python script.py"
     }
   }
 }

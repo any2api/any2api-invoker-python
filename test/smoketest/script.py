@@ -9,6 +9,7 @@ for line in sys.stdin:
 
 print 'ENV:'
 print 'FOO =', os.environ['FOO']
+print 'input_env =', os.environ['input_env']
 
 print 'FILE:'
 with open('./input.txt', 'r') as f:

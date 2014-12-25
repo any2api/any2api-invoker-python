@@ -18,6 +18,10 @@ var apiSpecScriptPy = {
           "type": "string",
           "mapping": "file",
           "file_path": "./input.txt"
+        },
+        "input_env": {
+          "type": "string",
+          "mapping": "env"
         }
       },
       "results_schema": {
@@ -43,12 +47,13 @@ var apiSpecScriptPy = {
 var runScriptPy = {
   parameters: {
     input_file: 'some input through a file',
+    input_env: 'some more input through env',
+    cmd: 'python script.py foo=bar',
     invoker_config: {
       env: {
         FOO: 'some input through env'
       },
       stdin: 'hello world',
-      cmd: 'python script.py foo=bar',
       requirements: 'requests==2.5.0\nPyYAML==3.11\n',
       access: 'local'
     }
