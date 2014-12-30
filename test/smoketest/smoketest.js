@@ -8,11 +8,11 @@ var util = require('any2api-util');
 var timeout = 1000 * 60 * 15; // 15 minutes
 
 var invokerPath = path.join(__dirname, '..', '..');
-var specPathScriptPy = path.join(__dirname, 'scriptpy-apispec.json');
+var specPathScript = path.join(__dirname, 'script-apispec.json');
 
-var apiSpecScriptPy = {
+var apiSpecScript = {
   "executables": {
-    "scriptpy": {
+    "script": {
       "parameters_schema": {
         "input_file": {
           "type": "string",
@@ -41,10 +41,10 @@ var apiSpecScriptPy = {
       "expose": true
     }
   },
-  apispec_path: specPathScriptPy
+  apispec_path: specPathScript
 };
 
-var runScriptPy = {
+var runScript = {
   parameters: {
     input_file: 'some input through a file',
     input_env: 'some more input through env',
@@ -64,7 +64,7 @@ var runScriptPy = {
 
 var cleanup = function(done) {
   async.series([
-    async.apply(fs.remove, specPathScriptPy),
+    async.apply(fs.remove, specPathScript),
     async.apply(fs.remove, path.join(invokerPath, 'node_modules'))
   ], done);
 };
@@ -77,12 +77,12 @@ describe('script.py', function() {
   before(cleanup);
 
   before(function(done) {
-    fs.writeFile(specPathScriptPy, JSON.stringify(apiSpecScriptPy), 'utf8', done);
+    fs.writeFile(specPathScript, JSON.stringify(apiSpecScript), 'utf8', done);
   });
 
   it('prepare buildtime', function(done) {
-    util.prepareBuildtime({ apiSpec: apiSpecScriptPy,
-                            executable_name: 'scriptpy' }, function(err) {
+    util.prepareBuildtime({ apiSpec: apiSpecScript,
+                            executable_name: 'script' }, function(err) {
                               if (err) throw err;
                               
                               done();
@@ -90,21 +90,21 @@ describe('script.py', function() {
   });
 
   it('prepare executable', function(done) {
-    util.prepareExecutable({ apiSpec: apiSpecScriptPy,
-                             executable_name: 'scriptpy' }, function(err, updatedSpec) {
+    util.prepareExecutable({ apiSpec: apiSpecScript,
+                             executable_name: 'script' }, function(err, updatedSpec) {
                                if (err) throw err;
 
-                               apiSpecScriptPy = updatedSpec;
+                               apiSpecScript = updatedSpec;
 
-                               expect(updatedSpec.executables.scriptpy.prepared).to.be.true;
+                               expect(updatedSpec.executables.script.prepared).to.be.true;
 
                                done();
                              });
   });
 
   it('prepare runtime', function(done) {
-    util.prepareRuntime({ apiSpec: apiSpecScriptPy,
-                          executable_name: 'scriptpy' }, function(err) {
+    util.prepareRuntime({ apiSpec: apiSpecScript,
+                          executable_name: 'script' }, function(err) {
                             if (err) throw err;
                             
                             done();
@@ -112,9 +112,9 @@ describe('script.py', function() {
   });
 
   it('invoke executable', function(done) {
-    util.invokeExecutable({ apiSpec: apiSpecScriptPy,
-                            executable_name: 'scriptpy',
-                            run: runScriptPy }, function(err, run) {
+    util.invokeExecutable({ apiSpec: apiSpecScript,
+                            executable_name: 'script',
+                            run: runScript }, function(err, run) {
                               if (err) throw err;
 
                               expect(run.finished).to.exist;
