@@ -54,6 +54,7 @@
       "type": "string",
       "default": "python script.py"
     }
-  }
+  },
+  "parameters_required": [ "cmd" ]
 }
 
