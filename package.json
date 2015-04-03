@@ -1,6 +1,6 @@
 {
   "name": "any2api-invoker-python",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "author": "Johannes Wettinger <mail@jojow.de>",
   "description": "Python invoker for any2api",
   "repository": {
