@@ -5,4 +5,4 @@ deploy:
   provider: npm
   email: mail@jojow.de
   api_key:
-    secure: MRaKCm8l114KoQU7OPlyhvGE56HT9r1vCL6KdaS+ZGPqq3YI1N2rIuABrBmMN8ephgbcu9f+SIcmFlwVnQn82keRnN2DEThZNUwKpiPcKuMpRwWX1QhnKK625xSox4U88VZmrqAk7eij8ikAwW0wiZeJglAJ+tNJs9uxjud5h5g=
+    secure: Mm/KwpfmHgS4EgaOiDPUQCWL5aHtToyJ38o7Ovu1a/J9aPB5csSNfJGpTWxbzwSvIBiYM9YThA7mFbLz/S3XvGHJqK/DjeD963jGsEjF9Nh9xXOMrWDb6a9V4YF7UU7EHUQ1ljsVIEWoJbK6qx/HqMVZ3DVgQ5OKsVL2JUTorho=
