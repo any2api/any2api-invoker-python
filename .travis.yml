@@ -8,5 +8,3 @@ deploy:
   email: mail@jojow.de
   api_key:
     secure: Mm/KwpfmHgS4EgaOiDPUQCWL5aHtToyJ38o7Ovu1a/J9aPB5csSNfJGpTWxbzwSvIBiYM9YThA7mFbLz/S3XvGHJqK/DjeD963jGsEjF9Nh9xXOMrWDb6a9V4YF7UU7EHUQ1ljsVIEWoJbK6qx/HqMVZ3DVgQ5OKsVL2JUTorho=
-after_deploy:
-- 'curl -H "Content-Type: application/json" --data ''{"build": true}'' -X POST https://registry.hub.docker.com/u/any2api/cli/trigger/$CLI_DOCKERHUB_BUILD_TOKEN/'
